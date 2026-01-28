@@ -21,6 +21,7 @@ jobs:
           npm run build
         env:
           CI: false
+          REACT_APP_MAINTENANCE_MODE: ${{ secrets.REACT_APP_MAINTENANCE_MODE }}
 
       # STEP 2: Switch to Node 20 to DEPLOY the site
       - name: Setup Node.js for Deploy
