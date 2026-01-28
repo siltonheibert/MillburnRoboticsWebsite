@@ -71,6 +71,7 @@ function Home() {
       {/* REAL CONTENT */}
 
       <div style={{ overflowX: "hidden" }}>
+        <h2 style={{ textAlign: "center", color: "red" }}>FORKED VERSION</h2>
         <Hero />
       </div>
       <YoutubeEmbed embedId="bgLSV98VkAk" />
