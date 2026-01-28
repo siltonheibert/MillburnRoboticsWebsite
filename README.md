@@ -51,6 +51,43 @@ Heroku is an easy to use online tool that allows you to deploy programs. I was e
 
 \-- Zayn Rekhi
 
+# Maintenance Mode
+
+The website includes an "under construction" mode that can be enabled to show visitors a maintenance page while you work on updates.
+
+## How to Use Maintenance Mode
+
+### Enable Maintenance Mode
+
+1. Create a `.env` file in the root directory (or update an existing one)
+2. Add the following line:
+   ```
+   REACT_APP_MAINTENANCE_MODE=true
+   ```
+3. Commit and push to the `main` branch
+4. The GitHub Actions workflow will automatically build and deploy with maintenance mode enabled
+5. All visitors will now see the maintenance page instead of the website
+
+### Disable Maintenance Mode
+
+1. Update your `.env` file:
+   ```
+   REACT_APP_MAINTENANCE_MODE=false
+   ```
+   Or simply remove the line entirely
+2. Commit and push to the `main` branch
+3. The site will deploy normally, showing all your updates
+
+### Local Development
+
+- Maintenance mode does **not** affect local development
+- You can work on the site locally with `npm start` regardless of the maintenance mode setting
+- The maintenance page only appears in production builds when the environment variable is set
+
+### Using GitHub Secrets (Optional)
+
+For more control, you can set `REACT_APP_MAINTENANCE_MODE` as a GitHub secret in your repository settings and reference it in the `.github/workflows/deploy.yml` file. This allows you to toggle maintenance mode without code changes.
+
 # Thank you!
 
 Thank you for reading through my description. Make sure to check out the website, I worked real hard on it.

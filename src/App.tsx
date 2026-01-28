@@ -15,11 +15,27 @@ import ContactUs from "./Components/ContactUs/ContactUs";
 import Footer from "./Components/Footer/Footer";
 import ScrollToTop from "./Components/ScrollToTop";
 import YoutubeEmbed from "./Components/SubHero/YoutubeEmbed";
+import UnderConstruction from "./Components/UnderConstruction/UnderConstruction";
 // import
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 config({ ssrFadeout: true });
 function App() {
+  // Check for maintenance mode
+  const isMaintenanceMode = process.env.REACT_APP_MAINTENANCE_MODE === "true";
+
+  // If maintenance mode is enabled, show only the maintenance page
+  if (isMaintenanceMode) {
+    return (
+      <div className="App">
+        <ThemeProvider theme={theme}>
+          <UnderConstruction />
+        </ThemeProvider>
+      </div>
+    );
+  }
+
+  // Otherwise, show the normal app
   return (
     <div className="App">
       <ThemeProvider theme={theme}>
