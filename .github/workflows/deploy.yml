@@ -2,14 +2,25 @@ name: Deploy to Firebase Hosting
 on:
   push:
     branches:
-      - main  # or 'master' depending on your fork
+      - main  # Make sure this matches your branch name
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '14' # This older version is compatible with the project's libraries
+
       - name: Install and Build
-        run: npm ci && npm run build
+        run: |
+          npm install --legacy-peer-deps
+          npm run build
+        env:
+          NODE_OPTIONS: "--openssl-legacy-provider" # Fixes common "envelope" errors in older projects
+
       - name: Deploy to Firebase
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
