@@ -9,7 +9,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Setup Node.js
+      # STEP 1: Use Node 16 to BUILD the site
+      - name: Setup Node.js for Build
         uses: actions/setup-node@v4
         with:
           node-version: '16.20.2'
@@ -19,7 +20,13 @@ jobs:
           npm install --legacy-peer-deps
           npm run build
         env:
-          CI: false # This tells the build to ignore warnings and keep going
+          CI: false
+
+      # STEP 2: Switch to Node 20 to DEPLOY the site
+      - name: Setup Node.js for Deploy
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
 
       - name: Deploy to Firebase
         uses: FirebaseExtended/action-hosting-deploy@v0
