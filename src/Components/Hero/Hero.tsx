@@ -61,7 +61,7 @@ export default function Hero() {
                 {/* <Typography variant = "h5" align="center" className = {classes.centertext}>
                 Millburn <br/> Robotics
                 </Typography> */}
-                <img alt="Millburn Robotics" style={{display: 'block', margin: '-20px auto', maxWidth: '100vw'}} src={logo}/>
+                <img alt="Millburn Robotics!" style={{display: 'block', margin: '-20px auto', maxWidth: '100vw'}} src={logo}/>
             </div>
             
         </div>
