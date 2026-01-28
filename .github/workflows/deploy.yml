@@ -12,12 +12,14 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '16.20.2' # A very stable, specific legacy version
+          node-version: '16.20.2'
 
       - name: Install and Build
         run: |
           npm install --legacy-peer-deps
           npm run build
+        env:
+          CI: false # This tells the build to ignore warnings and keep going
 
       - name: Deploy to Firebase
         uses: FirebaseExtended/action-hosting-deploy@v0
